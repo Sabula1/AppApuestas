@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AppApuestas - Inicio</title>
+    <meta name="description" content="Página de inicio AppApuestas">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root{ --bg:#f5f7fa; --card:#fff; --accent:#0a74da; --muted:#6b7280; --maxw:1100px;}
+        *{box-sizing:border-box}
+        body{font-family:Segoe UI, Roboto, Arial, sans-serif; margin:0; background:var(--bg); color:#111}
+        .container{max-width:var(--maxw); margin:0 auto; padding:24px;}
+        header{background:var(--card); border-radius:8px; padding:12px 18px; box-shadow:0 6px 18px rgba(0,0,0,.06); display:flex; align-items:center; justify-content:space-between; gap:12px}
+        .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit}
+        .logo{width:38px;height:38px;border-radius:6px;background:linear-gradient(135deg,var(--accent),#0063b1); display:flex; align-items:center; justify-content:center;color:#fff;font-weight:700}
+        nav ul{list-style:none;margin:0;padding:0;display:flex;gap:12px;align-items:center}
+        nav a{display:inline-block;padding:8px 12px;border-radius:6px;color:var(--muted);text-decoration:none;font-weight:600}
+        nav a.active, nav a:hover{background:#eef6ff;color:var(--accent)}
+        .cta{background:var(--accent); color:#fff; padding:8px 12px;border-radius:6px;text-decoration:none;font-weight:600}
+        main{margin-top:20px; display:grid; gap:18px; grid-template-columns:1fr}
+        section.card{background:var(--card); padding:18px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.04)}
+        .grid{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+        footer{margin-top:18px;text-align:center;color:var(--muted);font-size:14px}
+
+        /* carousel */
+        .carousel{position:relative; overflow:hidden; border-radius:8px; background:#000; color:#fff;}
+        .slides{position:relative; height:280px;}
+        .slides img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .6s ease-in-out; display:block;}
+        .slides img.active{opacity:1;}
+        .carousel-controls{position:absolute; left:12px; right:12px; bottom:12px; display:flex; justify-content:center; gap:8px; pointer-events:none;}
+        .indicator{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.5); border:0; pointer-events:auto; cursor:pointer}
+        .indicator.active{background:var(--accent)}
+        .play-btn{display:inline-block;margin-top:12px;padding:12px 20px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(10,116,218,.14)}
+        .carousel-legend{position:absolute; left:18px; bottom:60px; background:rgba(0,0,0,.4); padding:8px 12px;border-radius:6px; font-weight:600}
+
+        /* mobile nav toggle */
+        .menu-btn{display:none;background:transparent;border:0;padding:8px;border-radius:6px;cursor:pointer}
+        @media (max-width:720px){
+            nav ul{display:none; position:absolute; top:64px; right:18px; background:var(--card); padding:12px; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,.08); flex-direction:column; min-width:180px}
+            nav ul.show{display:flex}
+            .menu-btn{display:inline-block}
+            .slides{height:200px}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a class="brand" href="Inicio.html" aria-label="Inicio AppApuestas">
+                <div class="logo">AA</div>
+                <div>
+                    <div style="font-weight:700">AppApuestas</div>
+                    <div style="font-size:12px;color:var(--muted)">Tu sitio de apuestas</div>
+                </div>
+            </a>
+
+            <nav aria-label="Navegación principal">
+                <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">☰</button>
+                <ul id="mainNav">
+                    <li><a href="Inicio.html" class="nav-link active">Inicio</a></li>
+                    <li><a href="Perfil.html" class="nav-link">Perfil</a></li>
+                    <li><a href="Nosotros.html" class="nav-link">Nosotros</a></li>
+                    <li><a href="Apuestas.html" class="nav-link">Apuestas</a></li>
+                    <li><a href="Formulario.html" class="cta">Registrarse</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Carousel con imágenes rotativas -->
+            <section class="card carousel" aria-labelledby="h-carousel">
+                <h2 id="h-carousel" style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">Galería</h2>
+                <div class="slides" id="slides">
+                    <!-- Reemplaza las rutas de las imágenes por las tuyas en la carpeta html/images/ o donde las coloques -->
+                    <img src="../Imagenes/OIP (1).webp" alt="Evento destacado 1" class="slide active" data-legend="Evento destacado 1">
+                    <img src="../Imagenes/OIP (2).webp" alt="Evento destacado 2" class="slide active" data-legend="Evento destacado 2">
+                    <img src="../Imagenes/OIP.webp" alt="Evento destacado 3" class="slide active" data-legend="Evento destacado 3">
+                </div>
+
+                <div class="carousel-legend" id="carouselLegend">Evento destacado 1</div>
+
+                <div class="carousel-controls" id="carouselIndicators" role="tablist" aria-label="Indicadores de imágenes">
+                    <button class="indicator active" data-index="0" aria-label="Imagen 1"></button>
+                    <button class="indicator" data-index="1" aria-label="Imagen 2"></button>
+                    <button class="indicator" data-index="2" aria-label="Imagen 3"></button>
+                </div>
+
+                <div style="text-align:center; padding:16px 0; background:transparent;">
+                    <a href="Apuestas.html" class="play-btn" id="playBtn">JUGAR</a>
+                </div>
+            </section>
+
+            <!-- Secciones existentes -->
+            <section id="inicio" class="card" aria-labelledby="h-inicio">
+                <h2 id="h-inicio">Bienvenido a AppApuestas</h2>
+                <p style="color:var(--muted)">Explora apuestas seguras, crea tu perfil y únete a la comunidad. Usa la navegación para ir a Perfil, Nosotros o Apuestas.</p>
+                <div class="grid" style="margin-top:12px">
+                    <div style="padding:12px;border-radius:6px;background:#f8fbff">
+                        <strong>Nueva temporada</strong>
+                        <div style="font-size:13px;color:var(--muted)">Ofertas y eventos destacados.</div>
+                    </div>
+                    <div style="padding:12px;border-radius:6px;background:#fff6f6">
+                        <strong>Bonos</strong>
+                        <div style="font-size:13px;color:var(--muted)">Aprovecha bonos de bienvenida.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="perfil" class="card" aria-labelledby="h-perfil">
+                <h3 id="h-perfil">Perfil</h3>
+                <p style="color:var(--muted)">Accede a tu perfil para ver tu historial, saldo y configuraciones. Si no tienes cuenta, regístrate.</p>
+            </section>
+
+            <section id="nosotros" class="card" aria-labelledby="h-nosotros">
+                <h3 id="h-nosotros">Nosotros</h3>
+                <p style="color:var(--muted)">Somos un equipo dedicado a ofrecer una experiencia justa y entretenida en apuestas deportivas y eventos.</p>
+            </section>
+
+            <section id="apuestas" class="card" aria-labelledby="h-apuestas">
+                <h3 id="h-apuestas">Apuestas</h3>
+                <p style="color:var(--muted)">Explora mercados, cuotas y crea tus combinadas. Visita la sección Apuestas para más detalles.</p>
+            </section>
+        </main>
+
+        <footer>
+            © 2025 AppApuestas — <a href="Nosotros.html">Sobre nosotros</a> · <a href="Formulario.html">Registrarse</a>
+        </footer>
+    </div>
+
+    <script>
+        // pequeño script para toggle nav en móvil y marcar enlace activo
+        (function(){
+            const menuBtn = document.getElementById('menuBtn');
+            const mainNav = document.getElementById('mainNav');
+            menuBtn && menuBtn.addEventListener('click', () => {
+                const shown = mainNav.classList.toggle('show');
+                menuBtn.setAttribute('aria-expanded', shown);
+            });
+
+            // marcar enlace activo según URL (simple)
+            const links = document.querySelectorAll('.nav-link');
+            const current = location.pathname.split('/').pop() || 'Inicio.html';
+            links.forEach(a => {
+                const href = a.getAttribute('href') || '';
+                if(href === current || (href === 'Inicio.html' && current === '')) {
+                    a.classList.add('active');
+                } else {
+                    a.classList.remove('active');
+                }
+            });
+        })();
+
+        // carousel simple: rotación automática + indicadores
+        (function(){
+            const slides = Array.from(document.querySelectorAll('.slides .slide'));
+            if(!slides.length) return;
+            const indicators = Array.from(document.querySelectorAll('.indicator'));
+            const legendEl = document.getElementById('carouselLegend');
+            let current = slides.findIndex(s => s.classList.contains('active'));
+            if(current < 0) current = 0;
+            let timer = null;
+            const interval = 4000;
+
+            function show(index){
+                slides.forEach((s,i) => s.classList.toggle('active', i === index));
+                indicators.forEach((btn,i) => btn.classList.toggle('active', i === index));
+                const legend = slides[index].dataset.legend || slides[index].alt || '';
+                if(legendEl) legendEl.textContent = legend;
+                current = index;
+            }
+
+            function next(){
+                show((current + 1) % slides.length);
+            }
+
+            indicators.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const i = parseInt(btn.dataset.index, 10) || 0;
+                    show(i);
+                    resetTimer();
+                });
+            });
+
+            function resetTimer(){
+                if(timer) clearInterval(timer);
+                timer = setInterval(next, interval);
+            }
+
+            // pausa en hover
+            const slidesContainer = document.getElementById('slides');
+            slidesContainer.addEventListener('mouseenter', () => clearInterval(timer));
+            slidesContainer.addEventListener('mouseleave', resetTimer);
+
+            // iniciar
+            show(current);
+            resetTimer();
+        })();
+    </script>
+</body>
+</html>
